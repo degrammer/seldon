@@ -251,6 +251,10 @@ Named after [Hari Seldon](https://en.wikipedia.org/wiki/Hari_Seldon) from Isaac 
 
 That's what `/seldon` does for your implementation plans.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=degrammer/seldon&type=Date)](https://star-history.com/#degrammer/seldon-code&Date)
+
 ## License
 
 MIT
