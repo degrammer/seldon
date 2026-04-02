@@ -34,12 +34,12 @@
             --font-display: 'Young Serif', Georgia, serif;
             --font-body: 'Azeret Mono', 'Courier New', monospace;
 
-            --title-size: clamp(2.2rem, 6vw, 5rem);
-            --h2-size: clamp(1.4rem, 3.5vw, 2.5rem);
-            --h3-size: clamp(1rem, 2vw, 1.4rem);
-            --body-size: clamp(0.7rem, 1.3vw, 1rem);
-            --small-size: clamp(0.6rem, 0.9vw, 0.8rem);
-            --label-size: clamp(0.55rem, 0.8vw, 0.72rem);
+            --title-size: clamp(2.5rem, 7vw, 5.5rem);
+            --h2-size: clamp(1.6rem, 4vw, 3rem);
+            --h3-size: clamp(1.1rem, 2.2vw, 1.6rem);
+            --body-size: clamp(0.85rem, 1.5vw, 1.2rem);
+            --small-size: clamp(0.7rem, 1.1vw, 0.95rem);
+            --label-size: clamp(0.65rem, 0.95vw, 0.85rem);
 
             --slide-padding: clamp(1.5rem, 5vw, 5rem);
             --content-gap: clamp(0.75rem, 2vw, 2rem);
@@ -108,29 +108,29 @@
             :root {
                 --slide-padding: clamp(0.75rem, 3vw, 2rem);
                 --content-gap: clamp(0.4rem, 1.5vw, 1rem);
-                --title-size: clamp(1.5rem, 4.5vw, 2.8rem);
-                --h2-size: clamp(1.1rem, 3vw, 1.75rem);
+                --title-size: clamp(1.8rem, 5vw, 3.2rem);
+                --h2-size: clamp(1.3rem, 3.2vw, 2rem);
             }
         }
         @media (max-height: 600px) {
             :root {
                 --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
                 --content-gap: clamp(0.3rem, 1vw, 0.75rem);
-                --title-size: clamp(1.2rem, 4vw, 2rem);
-                --body-size: clamp(0.65rem, 1.1vw, 0.9rem);
+                --title-size: clamp(1.4rem, 4.5vw, 2.4rem);
+                --body-size: clamp(0.75rem, 1.2vw, 1rem);
             }
             .nav-dots, .keyboard-hint, .decorative { display: none; }
         }
         @media (max-height: 500px) {
             :root {
                 --slide-padding: clamp(0.4rem, 2vw, 1rem);
-                --title-size: clamp(1rem, 3.5vw, 1.5rem);
-                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
-                --body-size: clamp(0.6rem, 1vw, 0.8rem);
+                --title-size: clamp(1.2rem, 4vw, 1.8rem);
+                --h2-size: clamp(1rem, 2.8vw, 1.4rem);
+                --body-size: clamp(0.7rem, 1.1vw, 0.9rem);
             }
         }
         @media (max-width: 600px) {
-            :root { --title-size: clamp(1.5rem, 8vw, 2.5rem); }
+            :root { --title-size: clamp(1.8rem, 9vw, 3rem); }
             .grid { grid-template-columns: 1fr; }
             .two-col { flex-direction: column !important; }
         }
@@ -339,6 +339,67 @@
         }
 
         /* ===========================================
+           PERSONA CARDS (who's this for)
+           =========================================== */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: clamp(0.5rem, 1.2vw, 1rem);
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+        @media (max-width: 700px) {
+            .persona-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+        }
+
+        .persona-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            padding: clamp(1rem, 2.5vw, 2rem);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.3rem, 0.8vw, 0.6rem);
+            justify-content: center;
+        }
+
+        .persona-card .persona-role {
+            font-size: var(--body-size);
+            font-weight: 600;
+            color: var(--persona-color, var(--accent-gold));
+            display: flex;
+            align-items: center;
+            gap: clamp(0.2rem, 0.5vw, 0.4rem);
+        }
+
+        .persona-card .persona-role .persona-icon {
+            font-size: clamp(1rem, 1.6vw, 1.3rem);
+            line-height: 1;
+        }
+
+        .persona-card h3 {
+            font-size: var(--h3-size);
+            color: var(--text-primary);
+        }
+
+        .persona-card p {
+            font-size: var(--body-size);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .persona-card .persona-value {
+            font-size: var(--small-size);
+            color: var(--accent-gold);
+            border-top: 1px solid var(--border);
+            padding-top: clamp(0.25rem, 0.6vw, 0.5rem);
+            margin-top: auto;
+            line-height: 1.5;
+        }
+
+        /* ===========================================
            PROBLEM CARDS
            =========================================== */
         .problem-grid {
@@ -415,7 +476,7 @@
         }
 
         .flow-box h3 {
-            font-size: clamp(0.75rem, 1.3vw, 1rem);
+            font-size: clamp(0.85rem, 1.5vw, 1.15rem);
             color: var(--text-primary);
         }
 
@@ -447,17 +508,50 @@
             font-family: var(--font-body);
         }
 
-        .verdict-label {
-            font-size: var(--small-size);
+        .verdicts-stack {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.4rem, 1vh, 0.75rem);
+            max-width: min(85vw, 700px);
+        }
+
+        .verdict-header {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.4rem, 1vw, 0.8rem);
+        }
+
+        .verdict-badge {
+            font-size: var(--label-size);
+            font-weight: 600;
+            padding: clamp(2px, 0.3vw, 4px) clamp(6px, 0.8vw, 10px);
+            border-radius: 4px;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .badge-approve {
+            background: rgba(109, 212, 160, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(109, 212, 160, 0.25);
+        }
+        .badge-changes {
+            background: rgba(212, 165, 116, 0.15);
             color: var(--accent-gold);
-            font-weight: 500;
+            border: 1px solid rgba(212, 165, 116, 0.25);
+        }
+        .badge-revision {
+            background: rgba(232, 93, 93, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(232, 93, 93, 0.25);
         }
 
         .confidence-bar {
             display: flex;
             align-items: center;
-            gap: clamp(0.3rem, 0.8vw, 0.6rem);
+            gap: clamp(0.3rem, 0.6vw, 0.5rem);
             font-size: var(--small-size);
+            flex: 1;
         }
 
         .bar-track {
@@ -467,29 +561,104 @@
         }
 
         .bar-segment {
-            height: clamp(8px, 1.5vh, 14px);
+            height: clamp(6px, 1.2vh, 10px);
             flex: 1;
             border-radius: 2px;
             background: var(--text-muted);
-            opacity: 0.15;
+            opacity: 0.12;
             transition: opacity 0.4s ease, background 0.4s ease;
         }
 
         .bar-segment.filled {
-            background: var(--accent-gold);
             opacity: 1;
         }
+        .bar-segment.filled.green { background: var(--accent-green); }
+        .bar-segment.filled.gold { background: var(--accent-gold); }
+        .bar-segment.filled.red { background: var(--accent-red); }
 
         .bar-value {
             color: var(--text-primary);
             font-weight: 500;
-            min-width: 3ch;
+            min-width: 3.5ch;
+            font-size: var(--label-size);
         }
 
         .verdict-text {
             font-size: var(--small-size);
             color: var(--text-secondary);
             line-height: 1.6;
+        }
+
+        /* ===========================================
+           FOCUS MODES
+           =========================================== */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: clamp(0.4rem, 1vw, 0.75rem);
+            max-width: min(92vw, 960px);
+        }
+        @media (max-width: 800px) {
+            .focus-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .focus-grid { grid-template-columns: 1fr; }
+        }
+
+        .focus-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            padding: clamp(0.6rem, 1.4vw, 1.1rem);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.15rem, 0.4vw, 0.3rem);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .focus-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--focus-color, var(--accent-gold));
+        }
+
+        .focus-card .focus-name {
+            font-size: var(--small-size);
+            font-weight: 600;
+            color: var(--focus-color, var(--accent-gold));
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: clamp(0.2rem, 0.5vw, 0.4rem);
+        }
+
+        .focus-card .focus-name .focus-icon {
+            font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+            line-height: 1;
+        }
+
+        .focus-card h3 {
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
+            color: var(--text-primary);
+        }
+
+        .focus-card p {
+            font-size: var(--label-size);
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .focus-card .focus-example {
+            font-size: var(--label-size);
+            color: var(--text-muted);
+            font-style: italic;
+            border-top: 1px solid var(--border);
+            padding-top: clamp(0.15rem, 0.4vw, 0.3rem);
+            margin-top: auto;
         }
 
         /* ===========================================
@@ -540,8 +709,21 @@
         .model-card.openai .provider { color: var(--accent-green); }
         .model-card.codex .provider { color: var(--accent-blue); }
 
+        .card-cmd {
+            display: block;
+            font-family: var(--font-body);
+            font-size: var(--label-size);
+            line-height: 1.6;
+            color: var(--accent-gold);
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 4px;
+            padding: clamp(0.25rem, 0.5vw, 0.4rem) clamp(0.35rem, 0.7vw, 0.5rem);
+            margin-top: auto;
+            white-space: pre;
+        }
+
         .model-card h3 {
-            font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+            font-size: clamp(0.95rem, 1.6vw, 1.25rem);
             color: var(--text-primary);
         }
 
@@ -550,6 +732,456 @@
             color: var(--text-secondary);
             line-height: 1.6;
         }
+
+        /* ===========================================
+           CONFIDENCE / VERDICT EXPLAINED
+           =========================================== */
+        .verdict-explain-grid {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1.2vw, 0.9rem);
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .verdict-explain-row {
+            display: flex;
+            gap: clamp(0.5rem, 1.2vw, 1rem);
+            flex: 1;
+            min-height: 0;
+        }
+        @media (max-width: 700px) {
+            .verdict-explain-row { flex-direction: column; }
+        }
+
+        .ve-card {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            padding: clamp(0.6rem, 1.5vw, 1.1rem);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.15rem, 0.4vw, 0.3rem);
+            justify-content: center;
+        }
+
+        .ve-card h3 {
+            font-size: var(--body-size);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: clamp(0.2rem, 0.5vw, 0.4rem);
+        }
+
+        .ve-card p {
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .ve-card .ve-bar {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            padding-top: clamp(0.15rem, 0.3vw, 0.25rem);
+        }
+
+        .ve-card .ve-bar .ve-seg {
+            height: clamp(5px, 1vh, 8px);
+            flex: 1;
+            border-radius: 1.5px;
+            background: var(--text-muted);
+            opacity: 0.12;
+        }
+        .ve-card .ve-bar .ve-seg.on { opacity: 1; }
+
+        .ve-section-label {
+            font-size: var(--label-size);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ===========================================
+           BEFORE VS AFTER
+           =========================================== */
+        .compare-columns {
+            display: flex;
+            gap: clamp(0.6rem, 1.5vw, 1.2rem);
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+        @media (max-width: 700px) {
+            .compare-columns { flex-direction: column; }
+        }
+
+        .compare-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-radius: clamp(6px, 0.8vw, 10px);
+            overflow: hidden;
+        }
+
+        .compare-header {
+            padding: clamp(0.4rem, 1vw, 0.7rem) clamp(0.6rem, 1.5vw, 1rem);
+            font-size: var(--small-size);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .compare-col.without .compare-header {
+            background: rgba(232, 93, 93, 0.12);
+            color: var(--accent-red);
+        }
+        .compare-col.with .compare-header {
+            background: rgba(109, 212, 160, 0.12);
+            color: var(--accent-green);
+        }
+
+        .compare-steps {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 clamp(6px, 0.8vw, 10px) clamp(6px, 0.8vw, 10px);
+        }
+
+        .compare-step {
+            flex: 1;
+            padding: clamp(0.4rem, 1vw, 0.7rem) clamp(0.6rem, 1.5vw, 1rem);
+            display: flex;
+            align-items: center;
+            gap: clamp(0.3rem, 0.8vw, 0.6rem);
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            line-height: 1.5;
+        }
+
+        .compare-step:last-child { border-bottom: none; }
+
+        .compare-step .step-icon {
+            flex-shrink: 0;
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+        }
+
+        .compare-step.bad { color: var(--accent-red); opacity: 0.85; }
+        .compare-step.good { color: var(--accent-green); opacity: 0.85; }
+
+        .compare-result {
+            padding: clamp(0.5rem, 1.2vw, 0.8rem) clamp(0.6rem, 1.5vw, 1rem);
+            font-size: var(--body-size);
+            font-weight: 500;
+            text-align: center;
+        }
+        .compare-col.without .compare-result { color: var(--accent-red); }
+        .compare-col.with .compare-result { color: var(--accent-green); }
+
+        /* ===========================================
+           STATUS QUO
+           =========================================== */
+        .status-quo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(0.5rem, 1.2vw, 1rem);
+            width: 100%;
+        }
+        @media (max-width: 700px) {
+            .status-quo-grid { grid-template-columns: 1fr; }
+        }
+
+        .sq-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            padding: clamp(0.7rem, 1.5vw, 1.2rem);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.2rem, 0.5vw, 0.4rem);
+            text-align: center;
+        }
+
+        .sq-card .sq-method {
+            font-size: var(--body-size);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .sq-card .sq-time {
+            font-size: var(--h3-size);
+            font-family: var(--font-display);
+        }
+        .sq-card.slow .sq-time { color: var(--accent-red); }
+        .sq-card.medium .sq-time { color: var(--accent-amber); }
+        .sq-card.fast .sq-time { color: var(--accent-green); }
+
+        .sq-card .sq-desc {
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .sq-card .sq-catches {
+            font-size: var(--label-size);
+            margin-top: auto;
+            padding-top: clamp(0.2rem, 0.5vw, 0.4rem);
+            border-top: 1px solid var(--border);
+        }
+        .sq-card.slow .sq-catches { color: var(--accent-red); }
+        .sq-card.medium .sq-catches { color: var(--accent-amber); }
+        .sq-card.fast .sq-catches { color: var(--accent-green); }
+
+        /* ===========================================
+           WORKFLOW DIAGRAM
+           =========================================== */
+        .workflow-lane {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.3rem, 0.8vw, 0.6rem);
+            width: 100%;
+        }
+        @media (max-width: 700px) {
+            .workflow-lane { flex-direction: column; }
+            .workflow-lane .wf-arrow { transform: rotate(90deg); }
+        }
+
+        .wf-node {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            padding: clamp(0.6rem, 1.5vw, 1.1rem);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(0.15rem, 0.4vw, 0.3rem);
+            min-width: 0;
+        }
+
+        .wf-node .wf-icon {
+            font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+            line-height: 1;
+        }
+
+        .wf-node h3 {
+            font-size: clamp(0.8rem, 1.3vw, 1.05rem);
+            color: var(--text-primary);
+        }
+
+        .wf-node .wf-who {
+            font-size: var(--label-size);
+            color: var(--text-muted);
+        }
+
+        .wf-node.highlight {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px rgba(212, 165, 116, 0.08);
+        }
+        .wf-node.highlight h3 { color: var(--accent-gold); }
+
+        .wf-arrow {
+            color: var(--accent-gold);
+            font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+            flex-shrink: 0;
+            opacity: 0.4;
+        }
+
+        .wf-caption {
+            text-align: center;
+            font-size: var(--small-size);
+            color: var(--text-muted);
+            padding-top: clamp(0.3rem, 0.8vw, 0.5rem);
+        }
+
+        /* ===========================================
+           NAME STORY
+           =========================================== */
+        .name-story-block {
+            max-width: min(70ch, 85vw);
+            display: flex;
+            flex-direction: column;
+            gap: var(--content-gap);
+            align-items: center;
+            text-align: center;
+        }
+
+        .name-big-quote {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            color: var(--text-primary);
+            line-height: 1.35;
+            font-style: italic;
+        }
+
+        .name-explanation {
+            font-size: var(--body-size);
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .name-parallel {
+            font-size: var(--body-size);
+            color: var(--accent-gold);
+            line-height: 1.6;
+        }
+
+        /* ===========================================
+           REAL-WORLD SCENARIO
+           =========================================== */
+        .scenario-container {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1.2vw, 0.9rem);
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .scenario-step {
+            display: flex;
+            gap: clamp(0.5rem, 1.2vw, 1rem);
+            align-items: flex-start;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            padding: clamp(0.6rem, 1.5vw, 1.1rem);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .scenario-step .step-marker {
+            flex-shrink: 0;
+            width: clamp(28px, 3vw, 40px);
+            height: clamp(28px, 3vw, 40px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            line-height: 1;
+        }
+
+        .scenario-step .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.1rem, 0.3vw, 0.2rem);
+            min-width: 0;
+        }
+
+        .scenario-step .step-who {
+            font-size: var(--label-size);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .scenario-step h3 {
+            font-size: var(--body-size);
+            color: var(--text-primary);
+        }
+
+        .scenario-step p {
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .scenario-step .step-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: var(--small-size);
+            border-left: 2px solid var(--border);
+            padding-left: clamp(0.4rem, 0.8vw, 0.6rem);
+            line-height: 1.55;
+        }
+
+        .scenario-outcome {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: var(--h3-size);
+            color: var(--accent-gold);
+            padding: clamp(0.3rem, 0.8vw, 0.5rem) 0;
+        }
+
+        /* ===========================================
+           USAGE EXAMPLE
+           =========================================== */
+        .usage-columns {
+            display: flex;
+            gap: clamp(0.6rem, 1.5vw, 1.2rem);
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+        @media (max-width: 800px) {
+            .usage-columns { flex-direction: column; }
+        }
+
+        .usage-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.3rem, 0.8vw, 0.6rem);
+            min-width: 0;
+        }
+
+        .usage-col-label {
+            font-size: var(--label-size);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            opacity: 0.7;
+        }
+
+        .usage-output {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            padding: clamp(0.6rem, 1.5vw, 1.2rem);
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            line-height: 1.65;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .usage-output .out-label {
+            color: var(--text-muted);
+            font-size: var(--label-size);
+        }
+
+        .usage-output .out-verdict {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .usage-output .out-green { color: var(--accent-green); }
+        .usage-output .out-red { color: var(--accent-red); }
+        .usage-output .out-muted { color: var(--text-muted); }
+        .usage-output .out-body { color: var(--text-secondary); }
+        .usage-output .out-ref { color: var(--accent-blue); font-size: var(--label-size); }
+
+        .usage-cmd {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: clamp(6px, 0.8vw, 10px);
+            padding: clamp(0.5rem, 1.2vw, 0.8rem);
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            color: var(--accent-gold);
+        }
+
+        .usage-cmd .cmd-prompt { color: var(--text-muted); }
 
         /* ===========================================
            INSTALL BLOCK
@@ -586,7 +1218,7 @@
 
         .closing-quote {
             font-family: var(--font-display);
-            font-size: clamp(1rem, 2.5vw, 1.6rem);
+            font-size: clamp(1.1rem, 2.8vw, 1.8rem);
             color: var(--text-secondary);
             font-style: italic;
             max-width: min(55ch, 80vw);
@@ -596,6 +1228,62 @@
         .closing-attr {
             font-size: var(--small-size);
             color: var(--text-muted);
+        }
+
+        /* ===========================================
+           LOGO + FLOATING SQUARES
+           =========================================== */
+        .logo-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(160px, 24vw, 320px);
+            height: clamp(160px, 24vw, 320px);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            max-height: none;
+            filter: drop-shadow(0 0 20px rgba(109, 168, 212, 0.15));
+        }
+
+        .floating-squares {
+            position: absolute;
+            inset: -30% -30% -10% -30%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .floating-squares rect {
+            animation: float-down var(--sq-duration, 6s) var(--sq-delay, 0s) ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-down {
+            0% {
+                opacity: 0;
+                transform: translateY(calc(-1 * clamp(20px, 4vh, 50px))) rotate(0deg);
+            }
+            15% {
+                opacity: var(--sq-opacity, 0.85);
+            }
+            50% {
+                opacity: var(--sq-opacity, 0.85);
+                transform: translateY(clamp(10px, 3vh, 30px)) rotate(var(--sq-rotate, 15deg));
+            }
+            85% {
+                opacity: var(--sq-opacity, 0.85);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(clamp(40px, 8vh, 80px)) rotate(var(--sq-rotate-end, 30deg));
+            }
         }
 
         /* ===========================================
@@ -651,6 +1339,25 @@
     <section class="slide title-slide grid-bg radial-glow" aria-label="Title">
         <div class="slide-content">
             <span class="title-label reveal">Claude Code Plugin</span>
+            <div class="logo-container reveal">
+                <svg class="floating-squares" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <!-- Cyan squares -->
+                    <rect x="30" y="25" width="10" height="10" rx="1.5" fill="#4dd9d0" style="--sq-duration:5.2s;--sq-delay:0s;--sq-rotate:20deg;--sq-rotate-end:40deg;--sq-opacity:0.9"/>
+                    <rect x="55" y="15" width="7" height="7" rx="1" fill="#4dd9d0" style="--sq-duration:6.8s;--sq-delay:1.2s;--sq-rotate:-15deg;--sq-rotate-end:-35deg;--sq-opacity:0.7"/>
+                    <rect x="160" y="30" width="9" height="9" rx="1.5" fill="#5be0d8" style="--sq-duration:7.1s;--sq-delay:0.5s;--sq-rotate:25deg;--sq-rotate-end:50deg;--sq-opacity:0.85"/>
+                    <!-- Green squares -->
+                    <rect x="70" y="10" width="8" height="8" rx="1" fill="#7cd45a" style="--sq-duration:6.0s;--sq-delay:0.8s;--sq-rotate:-20deg;--sq-rotate-end:-45deg;--sq-opacity:0.85"/>
+                    <rect x="120" y="20" width="6" height="6" rx="1" fill="#8ae86d" style="--sq-duration:5.5s;--sq-delay:2.0s;--sq-rotate:12deg;--sq-rotate-end:28deg;--sq-opacity:0.75"/>
+                    <!-- Orange squares -->
+                    <rect x="140" y="18" width="11" height="11" rx="1.5" fill="#e8945a" style="--sq-duration:6.4s;--sq-delay:0.3s;--sq-rotate:-18deg;--sq-rotate-end:-38deg;--sq-opacity:0.9"/>
+                    <rect x="45" y="35" width="6" height="6" rx="1" fill="#d4a574" style="--sq-duration:7.5s;--sq-delay:1.8s;--sq-rotate:30deg;--sq-rotate-end:55deg;--sq-opacity:0.7"/>
+                    <!-- Teal / mixed -->
+                    <rect x="100" y="12" width="8" height="8" rx="1" fill="#45c7bf" style="--sq-duration:5.8s;--sq-delay:1.5s;--sq-rotate:-10deg;--sq-rotate-end:-22deg;--sq-opacity:0.8"/>
+                    <rect x="170" y="40" width="7" height="7" rx="1" fill="#7cd45a" style="--sq-duration:6.9s;--sq-delay:2.5s;--sq-rotate:22deg;--sq-rotate-end:42deg;--sq-opacity:0.65"/>
+                    <rect x="85" y="30" width="5" height="5" rx="0.8" fill="#e8945a" style="--sq-duration:8.0s;--sq-delay:3.0s;--sq-rotate:-25deg;--sq-rotate-end:-50deg;--sq-opacity:0.6"/>
+                </svg>
+                <img src="seldon-logo.png" alt="Seldon — pixel art Hari Seldon hologram">
+            </div>
             <h1 class="title-main reveal">Seldon</h1>
             <div class="title-separator reveal"></div>
             <p class="title-sub reveal">
@@ -662,12 +1369,69 @@
     </section>
 
     <!-- ================================================
-         SLIDE 2: THE PROBLEM
+         SLIDE 2: WHY THIS MATTERS (non-technical)
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="Why This Matters">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content">
+            <span class="slide-number reveal">01</span>
+            <h2 class="slide-heading reveal">AI writes the plan. Who checks it?</h2>
+            <p class="slide-body reveal">
+                AI assistants are writing implementation plans, migration specs, architecture proposals, and project roadmaps for software-teams and builders. These plans look polished and confident &mdash; but no one is verifying they actually match reality.
+            </p>
+            <p class="slide-body reveal">
+                Seldon is a second pair of eyes. Like having an independent reviewer read a contractor's proposal before you sign &mdash; it checks the plan against your actual project, flags what doesn't add up, and tells you what to fix before your team spends days building the wrong thing.
+            </p>
+            <p class="reveal" style="color: var(--accent-gold); font-family: var(--font-display); font-size: var(--h2-size); line-height: 1.3;">
+                Less rework. Fewer surprises. Faster, safer delivery.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE 3: WHO'S THIS FOR
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="Who is this for">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content" style="justify-content: stretch; gap: 0;">
+            <span class="slide-number reveal" style="padding-bottom: clamp(0.3rem, 0.8vh, 0.6rem);">02</span>
+            <h2 class="slide-heading reveal" style="padding-bottom: clamp(0.4rem, 1vh, 0.8rem);">Who's this for</h2>
+            <div class="persona-grid">
+                <div class="persona-card reveal" style="--persona-color: #e8b86d;">
+                    <span class="persona-role"><span class="persona-icon">&#x1F3AF;</span> Founders &amp; CTOs</span>
+                    <h3>Trust but verify</h3>
+                    <p>Your team uses AI to plan features and migrations. Seldon gives you a plain-English verdict before work starts &mdash; so you catch bad assumptions before they become expensive rework.</p>
+                    <span class="persona-value">Read the verdict, not the code.</span>
+                </div>
+                <div class="persona-card reveal" style="--persona-color: #6dd4a0;">
+                    <span class="persona-role"><span class="persona-icon">&#x1F4CB;</span> Product Managers</span>
+                    <h3>Approve with confidence</h3>
+                    <p>When an engineer shares an AI-generated plan, Seldon tells you what's solid and what's missing. No technical background needed to understand "3 blocking findings."</p>
+                    <span class="persona-value">Gate plans before sprint commitment.</span>
+                </div>
+                <div class="persona-card reveal" style="--persona-color: #6da8d4;">
+                    <span class="persona-role"><span class="persona-icon">&#x1F6E0;</span> Engineers &amp; builders</span>
+                    <h3>Catch your own blind spots</h3>
+                    <p>You prompted an agent to write a plan. Run /seldon before you build. It checks file paths, dependencies, and sequencing against your actual codebase in seconds.</p>
+                    <span class="persona-value">One command before you start coding.</span>
+                </div>
+                <div class="persona-card reveal" style="--persona-color: #a08cd4;">
+                    <span class="persona-role"><span class="persona-icon">&#x1F465;</span> Team leads</span>
+                    <h3>Review gate for AI-generated work</h3>
+                    <p>Add Seldon to your workflow: agent writes the plan, Seldon reviews it, the team reads the verdict together. Everyone sees the risks before committing resources.</p>
+                    <span class="persona-value">Shared decision-making, not blind trust.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE 4: THE PROBLEM
          ================================================ -->
     <section class="slide content-slide grid-bg" aria-label="The Problem">
         <div class="accent-line decorative"></div>
         <div class="slide-content">
-            <span class="slide-number reveal">01</span>
+            <span class="slide-number reveal">03</span>
             <h2 class="slide-heading reveal">Plans fail silently</h2>
             <p class="slide-body reveal">
                 AI agents generate confident, detailed implementation plans. But confidence is not correctness.
@@ -693,39 +1457,176 @@
     </section>
 
     <!-- ================================================
-         SLIDE 3: WHAT SELDON DOES
+         SLIDE: BEFORE VS AFTER
          ================================================ -->
-    <section class="slide content-slide grid-bg" aria-label="What Seldon Does">
+    <section class="slide content-slide grid-bg" aria-label="Before vs After">
         <div class="accent-line decorative"></div>
-        <div class="slide-content">
-            <span class="slide-number reveal">02</span>
-            <h2 class="slide-heading reveal">Review before you build</h2>
-            <p class="slide-body reveal">
-                Feed Seldon a plan. It reads the document, inspects your codebase for evidence, and returns a structured verdict.
-            </p>
-            <div class="verdict-demo reveal-scale">
-                <span class="verdict-label">approve_with_changes</span>
-                <div class="confidence-bar">
-                    <span style="color: var(--text-secondary)">Confidence</span>
-                    <div class="bar-track" id="confidenceBar"></div>
-                    <span class="bar-value" id="confidenceValue">0.00</span>
+        <div class="slide-content" style="justify-content: stretch; gap: 0;">
+            <span class="slide-number reveal" style="padding-bottom: clamp(0.2rem, 0.5vh, 0.4rem);">04</span>
+            <h2 class="slide-heading reveal" style="padding-bottom: clamp(0.3rem, 0.8vh, 0.6rem);">Two paths</h2>
+            <div class="compare-columns">
+                <div class="compare-col without reveal">
+                    <div class="compare-header">Without Seldon</div>
+                    <div class="compare-steps">
+                        <div class="compare-step"><span class="step-icon">&#x1F4DD;</span> AI generates a detailed plan</div>
+                        <div class="compare-step"><span class="step-icon">&#x1F44D;</span> Team skims it, looks good, approves</div>
+                        <div class="compare-step"><span class="step-icon">&#x1F6E0;</span> Sprint starts, devs begin building</div>
+                        <div class="compare-step bad"><span class="step-icon">&#x1F4A5;</span> Day 3: missing migration, wrong API path</div>
+                        <div class="compare-step bad"><span class="step-icon">&#x1F525;</span> Rework, scope change, blocked teammates</div>
+                    </div>
+                    <div class="compare-result">Deadline missed</div>
                 </div>
-                <p class="verdict-text">
-                    Plan is sound but assumes a migration path that doesn't exist yet.
-                    <span style="color: var(--accent-gold);">&#8594;</span>
-                    No v3 migration file in prisma/migrations/
-                </p>
+                <div class="compare-col with reveal">
+                    <div class="compare-header">With Seldon</div>
+                    <div class="compare-steps">
+                        <div class="compare-step"><span class="step-icon">&#x1F4DD;</span> AI generates a detailed plan</div>
+                        <div class="compare-step good"><span class="step-icon">&#x1F50D;</span> Seldon reviews: 2 blocking findings</div>
+                        <div class="compare-step good"><span class="step-icon">&#x1F527;</span> Fix the plan before work starts</div>
+                        <div class="compare-step"><span class="step-icon">&#x1F6E0;</span> Sprint starts on solid ground</div>
+                        <div class="compare-step good"><span class="step-icon">&#x2705;</span> No surprises, no rework</div>
+                    </div>
+                    <div class="compare-result">Shipped on time</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ================================================
-         SLIDE 4: HOW LLM-AS-JUDGE WORKS
+         SLIDE: STATUS QUO
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="How people review plans today">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content">
+            <span class="slide-number reveal">05</span>
+            <h2 class="slide-heading reveal">How people review AI plans today</h2>
+            <p class="slide-body reveal">Most teams do one of these. None of them scale.</p>
+            <div class="status-quo-grid">
+                <div class="sq-card slow reveal">
+                    <span class="sq-method">Manual review</span>
+                    <span class="sq-time">30+ min</span>
+                    <p class="sq-desc">Senior engineer reads every line, cross-references the codebase, checks file paths by hand. Thorough but expensive.</p>
+                    <span class="sq-catches">Catches most issues &mdash; if they have time</span>
+                </div>
+                <div class="sq-card medium reveal">
+                    <span class="sq-method">Skim and trust</span>
+                    <span class="sq-time">2 min</span>
+                    <p class="sq-desc">Glance at headings, check it "looks right," approve. The most common approach. Misses everything that isn't obvious.</p>
+                    <span class="sq-catches">Catches formatting issues only</span>
+                </div>
+                <div class="sq-card fast reveal">
+                    <span class="sq-method">Seldon</span>
+                    <span class="sq-time">30 sec</span>
+                    <p class="sq-desc">Automated review against the real codebase. Checks every file path, dependency, and prerequisite. Returns a structured verdict.</p>
+                    <span class="sq-catches">Catches what the codebase can prove</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE: REVIEW BEFORE YOU BUILD
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="What Seldon Does">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content">
+            <span class="slide-number reveal">06</span>
+            <h2 class="slide-heading reveal">Review before you build</h2>
+            <p class="slide-body reveal">
+                Feed Seldon a plan. It returns a structured verdict with evidence.
+            </p>
+            <div class="verdicts-stack">
+                <div class="verdict-demo reveal-scale">
+                    <div class="verdict-header">
+                        <span class="verdict-badge badge-approve">approve</span>
+                        <div class="confidence-bar">
+                            <div class="bar-track" data-confidence="0.94"></div>
+                            <span class="bar-value">0.94</span>
+                        </div>
+                    </div>
+                    <p class="verdict-text">Clean migration plan. All referenced files exist, deps are pinned, rollback tested.</p>
+                </div>
+                <div class="verdict-demo reveal-scale">
+                    <div class="verdict-header">
+                        <span class="verdict-badge badge-changes">approve_with_changes</span>
+                        <div class="confidence-bar">
+                            <div class="bar-track" data-confidence="0.72"></div>
+                            <span class="bar-value">0.72</span>
+                        </div>
+                    </div>
+                    <p class="verdict-text">Assumes schema v3 migration exists <span style="color:var(--accent-gold)">&#8594;</span> no v3 file in prisma/migrations/</p>
+                </div>
+                <div class="verdict-demo reveal-scale">
+                    <div class="verdict-header">
+                        <span class="verdict-badge badge-revision">request_major_revision</span>
+                        <div class="confidence-bar">
+                            <div class="bar-track" data-confidence="0.38"></div>
+                            <span class="bar-value">0.38</span>
+                        </div>
+                    </div>
+                    <p class="verdict-text">3 blocking findings: missing auth middleware, circular dep in step 4, no rollback plan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE: UNDERSTANDING THE VERDICT
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="Understanding the verdict">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content" style="justify-content: stretch; gap: 0;">
+            <span class="slide-number reveal" style="padding-bottom: clamp(0.2rem, 0.5vh, 0.4rem);">07</span>
+            <h2 class="slide-heading reveal" style="padding-bottom: clamp(0.3rem, 0.8vh, 0.6rem);">Understanding the verdict</h2>
+            <div class="verdict-explain-grid">
+                <span class="ve-section-label reveal">Three possible verdicts</span>
+                <div class="verdict-explain-row">
+                    <div class="ve-card reveal">
+                        <h3><span style="color:var(--accent-green);">&#x2713;</span> approve</h3>
+                        <p>The plan is solid. Claims match the codebase, sequencing is correct, no missing prerequisites. Safe to start building.</p>
+                    </div>
+                    <div class="ve-card reveal">
+                        <h3><span style="color:var(--accent-gold);">&#x25B2;</span> approve_with_changes</h3>
+                        <p>Mostly sound, but has issues that should be fixed first. Non-blocking findings are suggestions; blocking findings must be addressed.</p>
+                    </div>
+                    <div class="ve-card reveal">
+                        <h3><span style="color:var(--accent-red);">&#x2717;</span> request_major_revision</h3>
+                        <p>Fundamental problems. Missing files, broken dependencies, impossible sequencing. The plan needs significant rework before it's actionable.</p>
+                    </div>
+                </div>
+                <span class="ve-section-label reveal">Confidence score &mdash; how sure is the reviewer?</span>
+                <div class="verdict-explain-row">
+                    <div class="ve-card reveal">
+                        <h3><span style="display:inline-block;width:0.65em;height:0.65em;border-radius:50%;background:var(--accent-green);"></span> 0.90 &ndash; 1.00</h3>
+                        <p>High confidence. Every claim was verified against the codebase. Strong evidence for the verdict.</p>
+                        <div class="ve-bar"><span class="ve-seg on" style="background:var(--accent-green);"></span><span class="ve-seg on" style="background:var(--accent-green);"></span><span class="ve-seg on" style="background:var(--accent-green);"></span><span class="ve-seg on" style="background:var(--accent-green);"></span><span class="ve-seg on" style="background:var(--accent-green);"></span></div>
+                    </div>
+                    <div class="ve-card reveal">
+                        <h3><span style="display:inline-block;width:0.65em;height:0.65em;border-radius:50%;background:var(--accent-gold);"></span> 0.70 &ndash; 0.89</h3>
+                        <p>Moderate. Most claims verified, but some couldn't be checked locally (external APIs, runtime behavior).</p>
+                        <div class="ve-bar"><span class="ve-seg on" style="background:var(--accent-gold);"></span><span class="ve-seg on" style="background:var(--accent-gold);"></span><span class="ve-seg on" style="background:var(--accent-gold);"></span><span class="ve-seg on" style="background:var(--accent-gold);"></span><span class="ve-seg"></span></div>
+                    </div>
+                    <div class="ve-card reveal">
+                        <h3><span style="display:inline-block;width:0.65em;height:0.65em;border-radius:50%;background:var(--accent-amber);"></span> 0.50 &ndash; 0.69</h3>
+                        <p>Low. Significant gaps in what could be verified. The plan touches areas the reviewer couldn't fully inspect.</p>
+                        <div class="ve-bar"><span class="ve-seg on" style="background:var(--accent-amber);"></span><span class="ve-seg on" style="background:var(--accent-amber);"></span><span class="ve-seg on" style="background:var(--accent-amber);"></span><span class="ve-seg"></span><span class="ve-seg"></span></div>
+                    </div>
+                    <div class="ve-card reveal">
+                        <h3><span style="display:inline-block;width:0.65em;height:0.65em;border-radius:50%;background:var(--accent-red);"></span> 0.00 &ndash; 0.49</h3>
+                        <p>Very low. The reviewer couldn't verify most claims. Treat findings as directional, not definitive.</p>
+                        <div class="ve-bar"><span class="ve-seg on" style="background:var(--accent-red);"></span><span class="ve-seg on" style="background:var(--accent-red);"></span><span class="ve-seg"></span><span class="ve-seg"></span><span class="ve-seg"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE: HOW LLM-AS-JUDGE WORKS
          ================================================ -->
     <section class="slide content-slide grid-bg" aria-label="LLM as Judge">
         <div class="accent-line decorative"></div>
         <div class="slide-content">
-            <span class="slide-number reveal">03</span>
+            <span class="slide-number reveal">08</span>
             <h2 class="slide-heading reveal">LLM as Judge</h2>
             <p class="slide-body reveal">
                 A second model reads the plan, verifies claims against the workspace, and scores against a rubric &mdash; independently from the agent that authored it.
@@ -759,52 +1660,262 @@
     </section>
 
     <!-- ================================================
-         SLIDE 5: WHY MODEL DIVERSITY
+         SLIDE: WHERE SELDON FITS
          ================================================ -->
-    <section class="slide content-slide grid-bg" aria-label="Model Diversity">
+    <section class="slide content-slide grid-bg" aria-label="Where Seldon fits">
         <div class="accent-line decorative"></div>
         <div class="slide-content">
-            <span class="slide-number reveal">04</span>
-            <h2 class="slide-heading reveal">Why a different model provider</h2>
-            <p class="slide-body reveal">
-                The same model reviewing its own plan shares the same blind spots. Cross-provider review creates genuine independence.
-            </p>
-            <div class="model-grid">
-                <div class="model-card claude reveal">
-                    <span class="provider">Anthropic</span>
-                    <h3>Second opinion</h3>
-                    <p>A separate Claude instance reviews the plan. Same ecosystem, different context window and session.</p>
+            <span class="slide-number reveal">09</span>
+            <h2 class="slide-heading reveal">Where Seldon fits in your workflow</h2>
+            <p class="slide-body reveal">Seldon doesn't replace anyone. It's a gate between planning and building.</p>
+            <div class="workflow-lane reveal">
+                <div class="wf-node">
+                    <span class="wf-icon">&#x1F4CB;</span>
+                    <h3>Write spec</h3>
+                    <span class="wf-who">PM / founder</span>
                 </div>
-                <div class="model-card openai reveal">
-                    <span class="provider">OpenAI</span>
-                    <h3>Different training</h3>
-                    <p>Different pretraining data and RLHF means different failure modes, different strengths. True blind spot coverage.</p>
+                <span class="wf-arrow">&#x2192;</span>
+                <div class="wf-node">
+                    <span class="wf-icon">&#x1F916;</span>
+                    <h3>AI drafts plan</h3>
+                    <span class="wf-who">Claude / agent</span>
                 </div>
-                <div class="model-card codex reveal">
-                    <span class="provider">Codex CLI</span>
-                    <h3>Full workspace access</h3>
-                    <p>Reads your codebase in a sandboxed environment. Schema-enforced structured output. The deepest review.</p>
+                <span class="wf-arrow">&#x2192;</span>
+                <div class="wf-node highlight">
+                    <span class="wf-icon">&#x1F52D;</span>
+                    <h3>Seldon reviews</h3>
+                    <span class="wf-who">automated</span>
+                </div>
+                <span class="wf-arrow">&#x2192;</span>
+                <div class="wf-node">
+                    <span class="wf-icon">&#x1F465;</span>
+                    <h3>Team reads verdict</h3>
+                    <span class="wf-who">everyone</span>
+                </div>
+                <span class="wf-arrow">&#x2192;</span>
+                <div class="wf-node">
+                    <span class="wf-icon">&#x1F680;</span>
+                    <h3>Build starts</h3>
+                    <span class="wf-who">engineers</span>
+                </div>
+            </div>
+            <p class="wf-caption reveal">The verdict is plain English. Everyone on the team can read it &mdash; not just engineers.</p>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE: FOCUS MODES
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="Focus Modes">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content">
+            <span class="slide-number reveal">10</span>
+            <h2 class="slide-heading reveal">Focus modes</h2>
+            <p class="slide-body reveal">Steer the review toward what matters most. Default is balanced.</p>
+            <div class="focus-grid">
+                <div class="focus-card reveal" style="--focus-color: #8892a4;">
+                    <span class="focus-name"><span class="focus-icon">&#x2696;</span> balanced</span>
+                    <h3>Even coverage</h3>
+                    <p>All rubric dimensions weighted equally. Concrete evidence over speculation.</p>
+                    <span class="focus-example">/seldon my-plan.md</span>
+                </div>
+                <div class="focus-card reveal" style="--focus-color: #6da8d4;">
+                    <span class="focus-name"><span class="focus-icon">&#x2302;</span> architecture</span>
+                    <h3>Implementation realism</h3>
+                    <p>Service boundaries, dependency sprawl, migration risk, hidden integration work.</p>
+                    <span class="focus-example">/seldon --focus architecture spec.md</span>
+                </div>
+                <div class="focus-card reveal" style="--focus-color: #6dd4a0;">
+                    <span class="focus-name"><span class="focus-icon">&#x2713;</span> evaluation</span>
+                    <h3>Measurability</h3>
+                    <p>Success criteria, regression detection, testability of quality claims, observability.</p>
+                    <span class="focus-example">/seldon --focus evaluation spec.md</span>
+                </div>
+                <div class="focus-card reveal" style="--focus-color: #e8b86d;">
+                    <span class="focus-name"><span class="focus-icon">&#x25A0;</span> product</span>
+                    <h3>Delivery quality</h3>
+                    <p>User-visible failure modes, sequencing gaps, scope realism, product risk.</p>
+                    <span class="focus-example">/seldon --focus product spec.md</span>
+                </div>
+                <div class="focus-card reveal" style="--focus-color: #a08cd4;">
+                    <span class="focus-name"><span class="focus-icon">&#x2699;</span> operations</span>
+                    <h3>Rollout durability</h3>
+                    <p>Ownership, alerting, rollback plans, failure handling, maintenance burden.</p>
+                    <span class="focus-example">/seldon --focus operations spec.md</span>
+                </div>
+                <div class="focus-card reveal" style="--focus-color: #e85d5d;">
+                    <span class="focus-name"><span class="focus-icon">&#x26E8;</span> safety</span>
+                    <h3>Privacy &amp; security</h3>
+                    <p>Hallucination controls, citation integrity, access assumptions, unsafe fallbacks.</p>
+                    <span class="focus-example">/seldon --focus safety spec.md</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================================================
-         SLIDE 6: GET STARTED
+         SLIDE 6: WHY MODEL DIVERSITY
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="Model Diversity">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content">
+            <span class="slide-number reveal">11</span>
+            <h2 class="slide-heading reveal">Inline review vs. external judge</h2>
+            <p class="slide-body reveal">
+                When no external judge is configured, Seldon runs <b style="color: var(--text-primary);">inline</b> &mdash; the same Claude session reviews the plan itself. It still checks your codebase for evidence, but the reviewer shares the same model and biases as the author.
+            </p>
+            <p class="slide-body reveal" style="color: var(--accent-gold);">
+                Best practice: use a judge from a different provider. Different training data means different blind spots &mdash; that's where real bugs get caught.
+            </p>
+            <div class="model-grid">
+                <div class="model-card claude reveal">
+                    <span class="provider">Inline (default)</span>
+                    <h3>Zero config</h3>
+                    <p>Works out of the box. Good for quick checks, but shares the same blind spots as the author.</p>
+                    <code class="card-cmd">
+<span style="color:var(--text-muted)"># no setup needed</span>
+/seldon my-plan.md</code>
+                </div>
+                <div class="model-card openai reveal">
+                    <span class="provider">OpenAI / Gemini</span>
+                    <h3>True independence</h3>
+                    <p>Different training = different blind spots. The recommended setup.</p>
+                    <code class="card-cmd">
+<span style="color:var(--text-muted)"># activate the judge</span>
+cp judges/openai.sh judge-runner.sh</code>
+                </div>
+                <div class="model-card codex reveal">
+                    <span class="provider">Codex CLI</span>
+                    <h3>Deepest review</h3>
+                    <p>Full codebase access in a sandbox. Schema-enforced output.</p>
+                    <code class="card-cmd">
+<span style="color:var(--text-muted)"># activate the judge</span>
+cp judges/codex.sh judge-runner.sh</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE 8: REAL-WORLD SCENARIO
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="Real-world scenario">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content" style="justify-content: stretch; gap: 0;">
+            <span class="slide-number reveal" style="padding-bottom: clamp(0.2rem, 0.5vh, 0.4rem);">12</span>
+            <h2 class="slide-heading reveal" style="padding-bottom: clamp(0.3rem, 0.8vh, 0.6rem);">A Tuesday morning at a startup</h2>
+            <div class="scenario-container">
+                <div class="scenario-step reveal">
+                    <div class="step-marker" style="background: rgba(232, 184, 109, 0.15); color: var(--accent-amber);">&#x1F4CB;</div>
+                    <div class="step-content">
+                        <span class="step-who" style="color: var(--accent-amber);">Sarah &mdash; Product Manager</span>
+                        <h3>Asks Claude to plan the new payments integration</h3>
+                        <p>Claude generates a 4-phase plan: new Stripe webhook, migration script, updated checkout flow, monitoring. It looks thorough. Sarah is about to approve it for the sprint.</p>
+                    </div>
+                </div>
+                <div class="scenario-step reveal">
+                    <div class="step-marker" style="background: rgba(109, 168, 212, 0.15); color: var(--accent-blue);">&#x1F50D;</div>
+                    <div class="step-content">
+                        <span class="step-who" style="color: var(--accent-blue);">Sarah runs Seldon</span>
+                        <h3>Types <code style="color:var(--accent-gold); background:rgba(0,0,0,0.25); padding:1px 5px; border-radius:3px; font-size:inherit;">/seldon payments-plan.md</code> in Claude Desktop</h3>
+                        <p>30 seconds later, Seldon returns <b style="color:var(--accent-red);">request_major_revision</b> with 2 blocking findings.</p>
+                    </div>
+                </div>
+                <div class="scenario-step reveal">
+                    <div class="step-marker" style="background: rgba(232, 93, 93, 0.15); color: var(--accent-red);">&#x26A0;</div>
+                    <div class="step-content">
+                        <span class="step-who" style="color: var(--accent-red);">What Seldon found</span>
+                        <p class="step-quote">Phase 2 references <code style="font-size:inherit;">stripe_webhook_v2.ts</code> which doesn't exist. Phase 3 depends on a database column (<code style="font-size:inherit;">payment_intent_id</code>) that the migration in Phase 1 never creates.</p>
+                        <p>Without Seldon, the team would have discovered these gaps mid-sprint &mdash; 3 days of wasted work and a missed deadline.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="scenario-outcome reveal">Two minutes of review saved a week of rework.</p>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE 9: USAGE EXAMPLE
+         ================================================ -->
+    <section class="slide content-slide grid-bg" aria-label="Usage Example">
+        <div class="accent-line decorative"></div>
+        <div class="slide-content" style="justify-content: stretch; gap: 0;">
+            <span class="slide-number reveal" style="padding-bottom: clamp(0.2rem, 0.5vh, 0.4rem);">13</span>
+            <h2 class="slide-heading reveal" style="padding-bottom: clamp(0.3rem, 0.8vh, 0.6rem);">In practice</h2>
+            <div class="usage-columns">
+                <div class="usage-col reveal">
+                    <span class="usage-col-label">You run</span>
+                    <div class="usage-cmd"><span class="cmd-prompt">$ </span>/seldon docs/migration-plan.md</div>
+                    <div class="usage-cmd"><span class="cmd-prompt">$ </span>/seldon --focus safety spec.md context.md</div>
+                    <div class="usage-cmd"><span class="cmd-prompt">$ </span>/seldon --focus architecture spec.md</div>
+                </div>
+                <div class="usage-col reveal">
+                    <span class="usage-col-label">You get</span>
+                    <div class="usage-output">
+                        <span class="out-label">Judge:</span> <span class="out-body">codex via judge-runner.sh</span><br>
+                        <span class="out-label">Verdict:</span> <span class="out-verdict">approve_with_changes</span><br>
+                        <br>
+                        <span class="out-body">Plan is sound but assumes a migration path that doesn't exist yet.</span><br>
+                        <br>
+                        <span class="out-muted">Confidence</span> <span style="color:var(--accent-gold);">████████████████</span><span class="out-muted">░░░░</span> <span class="out-body">0.82</span><br>
+                        <br>
+                        <span class="out-green">Strengths:</span><br>
+                        <span class="out-body">&bull; Clear phasing with realistic scope per step</span><br>
+                        <span class="out-body">&bull; Good rollback strategy for the data migration</span><br>
+                        <br>
+                        <span class="out-red">Blocking findings:</span><br>
+                        <span class="out-body">&nbsp;&nbsp;<b>high</b> &mdash; Migration depends on schema v3</span><br>
+                        <span class="out-muted">&nbsp;&nbsp;Step 2 cannot begin without this prerequisite</span><br>
+                        <span class="out-ref">&nbsp;&nbsp;prisma/schema.prisma:42, docs/plan.md:18</span><br>
+                        <br>
+                        <span class="out-muted">Open questions:</span><br>
+                        <span class="out-body">&bull; Is the billing API rate limit sufficient for batch size?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE: THE NAME
+         ================================================ -->
+    <section class="slide content-slide grid-bg radial-glow" aria-label="The Name">
+        <div class="slide-content" style="align-items: center; justify-content: center;">
+            <div class="name-story-block">
+                <span class="slide-number reveal">14</span>
+                <p class="name-big-quote reveal">
+                    "At critical decision points, a holographic Seldon would appear and say: here's what you got wrong."
+                </p>
+                <div class="title-separator reveal"></div>
+                <p class="name-explanation reveal">
+                    Named after Hari Seldon from Asimov's <em>Foundation</em>. He developed psychohistory &mdash; a science that predicted where civilizations would fail by checking structural assumptions against reality.
+                </p>
+                <p class="name-parallel reveal">
+                    That's what /seldon does for your plans.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         SLIDE: GET STARTED
          ================================================ -->
     <section class="slide closing-slide grid-bg radial-glow" aria-label="Get Started">
         <div class="slide-content">
-            <span class="slide-number reveal">05</span>
+            <span class="slide-number reveal">15</span>
             <h2 class="slide-heading reveal" style="text-align: center;">Get started</h2>
-            <div class="install-block reveal-scale">
-                <code><span class="comment"># install the plugin</span>
+            <p class="slide-body reveal" style="text-align: center; max-width: min(65ch, 85vw); align-self: center;">
+                Works as a plugin for <b style="color: var(--text-primary);">Claude Code</b> (CLI) and <b style="color: var(--text-primary);">Claude Cowork</b> (desktop). No setup beyond installing the zip &mdash; no API keys, no config, no terminal skills needed.
+            </p>
+            <div class="install-block reveal-scale" style="align-self: center;">
+                <code><span class="comment"># 1. Download the latest release from</span>
+<span class="comment">#    <a href="https://github.com/degrammer/seldon/releases/" style="color: var(--accent-blue); text-decoration: none;">github.com/degrammer/seldon/releases</a></span>
+
+<span class="comment"># 2. Install the zip as a plugin</span>
 claude plugin install seldon.zip
 
-<span class="comment"># review a plan</span>
-/seldon my-plan.md
-
-<span class="comment"># focus on architecture</span>
-/seldon --focus architecture spec.md</code>
+<span class="comment"># 3. Review any plan</span>
+/seldon my-plan.md</code>
             </div>
             <div class="title-separator reveal"></div>
             <p class="closing-quote reveal">
@@ -947,44 +2058,66 @@ claude plugin install seldon.zip
                 this.slides[index].scrollIntoView({ behavior: 'smooth' });
             }
 
-            /* --- Confidence bar animation --- */
+            /* --- Confidence bars animation --- */
             setupConfidenceAnimation() {
-                const bar = document.getElementById('confidenceBar');
-                const val = document.getElementById('confidenceValue');
-                if (!bar || !val) return;
+                const tracks = document.querySelectorAll('.bar-track[data-confidence]');
+                if (!tracks.length) return;
 
-                // Create 20 segments
-                for (let i = 0; i < 20; i++) {
-                    const seg = document.createElement('div');
-                    seg.classList.add('bar-segment');
-                    bar.appendChild(seg);
-                }
+                tracks.forEach(track => {
+                    const confidence = parseFloat(track.dataset.confidence);
+                    const count = 20;
+                    const filled = Math.round(confidence * count);
 
-                const segments = bar.querySelectorAll('.bar-segment');
-                const targetConfidence = 0.82;
-                const filledCount = Math.round(targetConfidence * 20);
+                    // Determine color based on confidence level
+                    let colorClass = 'red';
+                    if (confidence >= 0.9) colorClass = 'green';
+                    else if (confidence >= 0.7) colorClass = 'gold';
 
-                // Animate when slide 3 becomes visible
+                    for (let i = 0; i < count; i++) {
+                        const seg = document.createElement('div');
+                        seg.classList.add('bar-segment');
+                        seg.dataset.index = i;
+                        seg.dataset.filled = i < filled ? '1' : '0';
+                        seg.dataset.color = colorClass;
+                        track.appendChild(seg);
+                    }
+                });
+
+                // Animate when parent slide becomes visible
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            let current = 0;
-                            const interval = setInterval(() => {
-                                if (current < filledCount) {
-                                    segments[current].classList.add('filled');
-                                    current++;
-                                    val.textContent = (current / 20).toFixed(2);
-                                } else {
-                                    clearInterval(interval);
-                                }
-                            }, 50);
-                            observer.disconnect();
+                            const barTracks = entry.target.querySelectorAll('.bar-track[data-confidence]');
+                            barTracks.forEach((track, trackIdx) => {
+                                const segments = track.querySelectorAll('.bar-segment');
+                                const val = track.parentElement.querySelector('.bar-value');
+                                const target = parseFloat(track.dataset.confidence);
+                                let current = 0;
+
+                                setTimeout(() => {
+                                    const interval = setInterval(() => {
+                                        if (current < segments.length && segments[current].dataset.filled === '1') {
+                                            segments[current].classList.add('filled', segments[current].dataset.color);
+                                            current++;
+                                            if (val) val.textContent = (current / 20).toFixed(2);
+                                        } else {
+                                            clearInterval(interval);
+                                            if (val) val.textContent = target.toFixed(2);
+                                        }
+                                    }, 40);
+                                }, trackIdx * 200);
+                            });
+                            observer.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.5 });
+                }, { threshold: 0.4 });
 
-                // Observe slide 3 (index 2)
-                if (this.slides[2]) observer.observe(this.slides[2]);
+                // Observe slides containing bars
+                document.querySelectorAll('.slide').forEach(slide => {
+                    if (slide.querySelector('.bar-track[data-confidence]')) {
+                        observer.observe(slide);
+                    }
+                });
             }
         }
 
