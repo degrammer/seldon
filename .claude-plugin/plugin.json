@@ -1,0 +1,11 @@
+{
+  "name": "seldon",
+  "version": "1.0.0",
+  "description": "Independent plan/spec reviewer for AI coding agents. Verifies claims against the workspace and returns structured verdicts with findings.",
+  "author": {
+    "name": "degrammer"
+  },
+  "repository": "https://github.com/degrammer/seldon",
+  "license": "MIT",
+  "keywords": ["planning", "review", "verification", "agents", "judge"]
+}
