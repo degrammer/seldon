@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "seldon",
+  "description": "Independent plan/spec reviewer for AI coding agents. Verifies claims against the workspace and returns structured verdicts with findings.",
+  "owner": {
+    "name": "degrammer"
+  },
+  "plugins": [
+    {
+      "name": "seldon",
+      "description": "Independent plan/spec reviewer for AI coding agents. Verifies claims against the workspace and returns structured verdicts with findings.",
+      "version": "1.1.0",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/seldon"],
+      "category": "development"
+    }
+  ]
+}
